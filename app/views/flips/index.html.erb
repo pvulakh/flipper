@@ -1,0 +1,11 @@
+<h1>all flips</h1>
+<a href="<%= new_flip_url %>">create new flip</a>
+
+<ul>
+    <% @flips.each do |flip| %>
+        <li>
+            <%= flip.body %> - <%= flip.author.username %>
+            <a href="<%= flip_url(flip) %>">show flip</a>
+        </li>
+    <% end %>
+</ul>

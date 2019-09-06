@@ -1,0 +1,24 @@
+<!-- underscores in the filename denote partials -->
+<!-- we're going to be passed in two variables: edit and flip -->
+<!-- edit will be a boolean telling us whether we are making a new flip or editing an existing one -->
+<!-- perform some conditional logic to determine what the form should actually look like -->
+<% if edit %>
+    <% action = flip_url(flip) %>
+    <% button_text = 'update flip' %>
+    <% title = 'edit flip' %>
+<% else %>
+    <% action = flips_url %>
+    <% button_text = 'flip it' %>
+    <% title = 'new flip' %>
+    <h1>new flip alert!</h1>
+<% end %>
+<!-- actual form -->
+<form action="<%= action %>" method="POST">
+    <% if edit %>
+        <input type="hidden" name="_method" value="PATCH">
+    <% end %>
+    <label for="body">Body</label>
+    <!-- nil renders as empty string in html -->
+    <input type="text" value="<%= flip.body %>" name="flip[body]" id="body">
+    <input type="submit" value="<%= button_text %>">
+</form>

@@ -1,0 +1,9 @@
+<h1>best flippin flip</h1>
+<%= @flip.body %> by <%= @flip.author.username %>
+<a href="<%= edit_flip_url(@flip) %>">edit flip</a>
+<!-- a tags always make GET requests -->
+<!-- because we need to specify the DELETE method, we have to use a form and a hidden input -->
+<form action="<%= flip_url(@flip) %>" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="bye bye flip">
+</form>
